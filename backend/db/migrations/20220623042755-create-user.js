@@ -15,8 +15,11 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(255),
         unique: true
+      },
+      avatar: {
+        type: Sequelize.STRING(255)
       },
       hashedPassword: {
         allowNull: false,
