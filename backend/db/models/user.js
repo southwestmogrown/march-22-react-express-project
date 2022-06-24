@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     avatar: {
-      type: DataTypes.String(255)
+      type: DataTypes.STRING
     }
   }, {
     defaultScope: {

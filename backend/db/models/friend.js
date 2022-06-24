@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     friendId: DataTypes.INTEGER
   }, {});
-  Friends.associate = function(models) {
+  Friend.associate = function(models) {
     Friend.belongsTo(models.User, { foreignKey: "userId" });
     Friend.belongsTo(models.User, { foreignKey: "friendId"})
   };
-  return Friends;
+  return Friend;
 };
