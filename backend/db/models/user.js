@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       valdate: {
         len: [60,60]
       }
+    },
+    avatar: {
+      type: DataTypes.String(255)
     }
   }, {
     defaultScope: {
@@ -48,6 +51,13 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Server, { foreignKey: "ownerId"});
+    User.hasMany(models.ServerMessage, { foreignKey: "userId" })
+    User.hasMany(models.DirectMessage, { foreignKey: "userId" })
+    User.hasMany(models.DirectMessage, { foreignKey: "recieverId" })
+    User.hasMany(models.Friend, { foreignKey: "userId" })
+    User.hasMany(models.Friend, { foreignKey: "friendId" })
+    User.hasMany(models.UserServer, { foreignKey: "userId" })
   };
 
   User.prototype.toSafeObject = function() {
