@@ -59,6 +59,22 @@ export const createServer = (serverFormData) => async (dispatch) => {
     }
 }
 
+export const updateServer = (serverId, serverFormData) => async (dispatch) => {
+    const res = await fetch(`/api/servers/${serverId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(serverFormData)
+    });
+
+    if (res.ok) {
+        const server = await res.json();
+        dispatch(add(server.updatedServer));
+        return server;
+    }
+}
+
 export default function serverReducer(state={}, action) {
     
     switch(action.type) {
