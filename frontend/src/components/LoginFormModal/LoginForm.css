@@ -7,5 +7,6 @@
 }
 
 #log-in-button:hover {
-    padding: 8px;
+    background-color: antiquewhite;
+    color: black;
 }

@@ -12,6 +12,10 @@
     color: antiquewhite;
 }
 
+.home-nav:hover {
+    font-weight: bold;
+}
+
 .home-nav-container {
     padding: 1em;
 }

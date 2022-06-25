@@ -17,8 +17,12 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <div className='nav-session-links'>
-        <LoginFormModal className='session-link' />
-        <SignupFormModal className='session-link' />
+        <div>
+          <LoginFormModal className='session-link' />
+        </div>
+        <div>
+          <SignupFormModal className='session-link' />
+        </div>
       </div>
     );
   }
