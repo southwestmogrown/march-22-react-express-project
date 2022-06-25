@@ -43,14 +43,35 @@ export const loadUserServers = (userId) => async (dispatch) => {
     }
 }
 
+export const createServer = (serverFormData) => async (dispatch) => {
+    const res = await fetch(`/api/servers`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(serverFormData)
+    });
+
+    if (res.ok) {
+        const server = await res.json();
+        dispatch(add(server.newServer));
+        return server;
+    }
+}
+
 export default function serverReducer(state={}, action) {
-    
     
     switch(action.type) {
         case LOAD:
-            const newState = {}
+            let newState = {}
             action.list.forEach(server => newState[server.id] = server)
             return newState;
+
+        case ADD:
+            console.log(state)
+            return { ...state, [action.server.id]: action.server };
+           
+
         default:
             return state;
     }
