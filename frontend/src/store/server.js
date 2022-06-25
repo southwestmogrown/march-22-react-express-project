@@ -75,18 +75,32 @@ export const updateServer = (serverId, serverFormData) => async (dispatch) => {
     }
 }
 
+export const deleteServer = (serverId) => async (dispatch) => {
+    const res = await fetch(`/api/servers/${serverId}`);
+
+    if (res.ok) {
+        const deletedId = await res.json();
+        dispatch(remove(serverId));
+        return deletedId;
+    }
+}
+
 export default function serverReducer(state={}, action) {
     
     switch(action.type) {
+        
         case LOAD:
             let newState = {}
             action.list.forEach(server => newState[server.id] = server)
             return newState;
 
         case ADD:
-            console.log(state)
             return { ...state, [action.server.id]: action.server };
            
+        case REMOVE:
+            const newServers = { ...state };
+            delete newServers[action.serverId];
+            return newServers;
 
         default:
             return state;
