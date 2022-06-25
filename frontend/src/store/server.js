@@ -33,6 +33,16 @@ export const loadAllServers = () => async (dispatch) => {
     }
 }
 
+export const loadUserServers = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/servers/user/${userId}`);
+
+    if (res.ok) {
+        const servers = await res.json();
+        dispatch(load(servers));
+        return servers;
+    }
+}
+
 export default function serverReducer(state={}, action) {
     
     
