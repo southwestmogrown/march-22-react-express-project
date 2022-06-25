@@ -16,7 +16,8 @@ module.exports = {
       serverId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Servers'}
+        references: { model: 'Servers'},
+        onDelete: "CASCADE"
       },
       createdAt: {
         allowNull: false,

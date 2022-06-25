@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Server.belongsTo(models.User, { foreignKey: "ownerId" });
     Server.hasMany(models.Channel, { foreignKey: "serverId" });
-    Server.hasMany(models.UserServer, { foreignKey: "serverId" });
+    Server.hasMany(models.UserServer, { as: "userservers", foreignKey: "serverId", onDelete: "CASCADE" });
   };
   return Server;
 };

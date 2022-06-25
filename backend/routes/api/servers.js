@@ -32,12 +32,13 @@ router.get(`/users/:userId`, asyncHandler(async(req, res) => {
         },
         include: [{
             model: UserServer,
+            as: 'userservers',
             where: {
                 userId
             }
         }]
     });
-    res.json(servers)
+    res.json(servers);
 }));
 
 router.post('/', asyncHandler(async(req, res) => {
@@ -49,7 +50,51 @@ router.post('/', asyncHandler(async(req, res) => {
         icon
     });
 
-    res.json(newServer)
+    const newUserServer = await UserServer.create({
+        serverId: newServer.id,
+        userId: ownerId
+    });
+
+    res.json({newServer, newUserServer})
+}));
+
+router.put('/:serverId', asyncHandler(async(req, res) => {
+    const serverId = req.params.serverId;
+    const { name, ownerId, icon } = req.body;
+
+    const updatedServer = await Server.findOne({
+        where: {
+            id: serverId
+        },
+        include: [{
+            model: UserServer, 
+            as: 'userservers',
+            attributes: ['userId'],
+            where: {
+                serverId,
+            },
+            
+        }]
+    });
+
+    updatedServer.name = name;
+    updatedServer.ownerId = ownerId;
+    updatedServer.icon = icon;
+    updatedServer.userservers[0].userId = ownerId;
+ 
+
+    res.json({ updatedServer });
+}));
+
+router.delete('/:serverId', asyncHandler(async(req, res) => {
+    const deletedServerId = req.params.serverId;
+    await Server.destroy({
+        where: {
+            id: deletedServerId
+        }
+    });
+
+    res.json({ deletedServerId })
 }));
 
 
