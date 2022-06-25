@@ -1,12 +1,25 @@
-#sign-up-button {
-    padding: 5px;
-    border: 2px solid black;
+.signup-form-container {
+    background-color: rgb(155, 154, 154);
+    height: 450px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 25px rgba(255,255,255,0.5),
+        -1px -1px 25px rgba(255,255,255,0.5);
+}
+
+.signup-form {
+    height: 425px;
+    width: 275px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid black;
     border-radius: 5px;
     background-color: #3f4242;
     color: antiquewhite;
-}
-
-#sign-up-button:hover {
-    background-color: antiquewhite;
-    color: black
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
