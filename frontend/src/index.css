@@ -3,3 +3,16 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+button {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #3f4242;
+    color: antiquewhite;
+}
+
+button:hover {
+    background-color: antiquewhite;
+    color: black;
+}
