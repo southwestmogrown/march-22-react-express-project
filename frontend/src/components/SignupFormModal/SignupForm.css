@@ -1,0 +1,11 @@
+#sign-up-button {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #3f4242;
+    color: antiquewhite;
+}
+
+#sign-up-button:hover {
+    padding: 8px;
+}
