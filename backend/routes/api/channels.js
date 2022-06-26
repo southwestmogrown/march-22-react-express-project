@@ -16,4 +16,27 @@ router.get('/:channelId', asyncHandler(async(req, res) => {
     res.json(channel)
 }));
 
+router.get('/servers/:serverId', asyncHandler(async(req, res) => {
+    const { serverId } = req.params;
+
+    const channels = await Channel.findAll({
+        where: {
+            serverId
+        }
+    });
+
+    res.json(channels)
+}));
+
+router.post('/', asyncHandler(async(req, res)  => {
+    const { name, serverId } = req.body;
+
+    const channel = await Channel.create({
+        name,
+        serverId
+    });
+
+    res.json(channel);
+}));
+
 module.exports = router;
