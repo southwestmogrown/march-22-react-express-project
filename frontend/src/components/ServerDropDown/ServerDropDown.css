@@ -1,0 +1,15 @@
+.servers-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.servers-list > li {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.servers-list > li:hover {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}

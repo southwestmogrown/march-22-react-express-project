@@ -14,6 +14,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import "./SideBar.css";
 import SidebarChannel from "../SidebarChannel";
 import * as serverActions from '../../store/server';
+import ServerDropDown from "../ServerDropDown";
 
 function Sidebar() {
 
@@ -29,6 +30,7 @@ function Sidebar() {
     
     const user = useSelector(state => state.session.user);
     const servers = useSelector(state => state.servers);
+    
 
     useEffect(() => {
         if (foundServers) setIsLoaded(true);
@@ -42,8 +44,7 @@ function Sidebar() {
         {isLoaded && (
             <div className="sidebar">
                 <div className="sidebar__top">
-                    <h3>{user.username}'s Server</h3>
-                    <ExpandMoreIcon />
+                    <ServerDropDown servers={servers} />
                 </div>
 
                 <div className="sidebar__channels">
