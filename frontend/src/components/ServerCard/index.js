@@ -3,6 +3,7 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import { useDispatch } from 'react-redux';
 
 import * as serverActions from '../../store/server';
+import UpdateServerFormModal from '../UpdateServerFormModal';
 
 import './ServerCard.css'
 
@@ -15,7 +16,7 @@ const ServerCard = ({ server }) => {
             </div>
             <div className='server-icons'>
                 <div className='icon'>
-                    <EditIcon style={{fontSize: '12px'}} />
+                    <UpdateServerFormModal server={server}/>
                 </div>
                 <div className='icon'>
                     <RemoveCircleIcon style={{fontSize: '12px'}} onClick={() => dispatch(serverActions.deleteServer(server.id))} />
