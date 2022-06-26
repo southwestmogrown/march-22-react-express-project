@@ -5,6 +5,10 @@ import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
+import Sidebar from "./components/SideBar";
+import Chat from "./components/Chat";
+
+import './App.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -18,13 +22,16 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
-            <SplashPage />
-          </Route>
-          <Route path='/users/:userId'>
-            <h1>User Home Page</h1>
-          </Route>
-        </Switch>
+            <Route exact path="/">
+              <SplashPage />
+            </Route>
+            <Route path='/users/:userId'>
+              <div className="App">
+                  <Sidebar />
+                  <Chat />
+              </div>
+            </Route>
+          </Switch>
       )}
     </>
   );
