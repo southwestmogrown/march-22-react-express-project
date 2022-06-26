@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
+import * as serverActions from '../../store/server';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
@@ -27,8 +28,10 @@ function LoginFormPage() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     });
+ 
+    const servers = await dispatch(serverActions.loadUserServers(user.id))
 
-    history.push(`/users/${user.id}`)
+    history.push(`/servers/${servers[0].id}`)
   }
 
   return (

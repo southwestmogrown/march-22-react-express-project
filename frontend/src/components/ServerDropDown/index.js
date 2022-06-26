@@ -9,7 +9,7 @@ import ServerCard from "../ServerCard";
 
 const ServerDropDown = ({servers}) => {
     const serversArray = Object.values(servers);
-    const [defaultServer, setDefaultServer] = useState(serversArray.splice(0,1)[0]);
+    const [defaultServer, setDefaultServer] = useState(serversArray[0]);
     const [showServers, setShowServers] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -35,7 +35,7 @@ const ServerDropDown = ({servers}) => {
                     <li style={{"display": "flex", "alignItems": "center"}}>Add a new server <CreateServerFormModal /> </li>
                     {
                     serversArray.map(server => (
-                        <li key={server.id}><ServerCard server={server} /></li>
+                        <li key={server.id}><ServerCard server={server} setDefaultServer={setDefaultServer} /></li>
                     ))
                     }
                 </ul>

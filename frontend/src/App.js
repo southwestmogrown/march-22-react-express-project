@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/">
               <SplashPage />
             </Route>
-            <Route path='/users/:userId'>
+            <Route path='/servers/:serverId'>
               <div className="App">
                   <Sidebar />
                   <Chat />
