@@ -1,10 +1,10 @@
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import AddIcon from "@material-ui/icons/Add";
 import { useState } from "react";
 
 import './ServerDropDown.css';
 import CreateServerFormModal from "../CreateServerForm";
+import ServerCard from "../ServerCard";
 
 
 const ServerDropDown = ({servers}) => {
@@ -17,10 +17,6 @@ const ServerDropDown = ({servers}) => {
         setShowServers(!showServers)
         setIsExpanded(!isExpanded)
     }
-
-    const addServerHandler = () => {
-        
-    }
     
     const expandIcon = isExpanded ? (
         <ExpandLessIcon onClick={handleShowServers} /> 
@@ -30,7 +26,7 @@ const ServerDropDown = ({servers}) => {
 
     return (
         <div className="servers-container">
-            <h3>
+            <h3 className="server-name" >
                 {defaultServer.name}
                 {expandIcon}
             </h3>
@@ -39,7 +35,7 @@ const ServerDropDown = ({servers}) => {
                     <li style={{"display": "flex", "alignItems": "center"}}>Add a new server <CreateServerFormModal /> </li>
                     {
                     serversArray.map(server => (
-                        <li key={server.id}>{server.name}</li>
+                        <li key={server.id}><ServerCard server={server} /></li>
                     ))
                     }
                 </ul>

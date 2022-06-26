@@ -9,6 +9,8 @@ function LoginFormPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const sessionServers = Object.values(useSelector(state => state.servers));
+  console.log(sessionServers)
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
