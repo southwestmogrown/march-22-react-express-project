@@ -16,11 +16,13 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <SplashPage />
       {isLoaded && (
         <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
+          <Route exact path="/">
+            <SplashPage />
+          </Route>
+          <Route path='/users/:userId'>
+            <h1>User Home Page</h1>
           </Route>
         </Switch>
       )}

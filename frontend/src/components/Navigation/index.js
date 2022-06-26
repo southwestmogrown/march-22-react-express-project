@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ProfileButton from './ProfileButton';
@@ -11,13 +11,19 @@ import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
+  const handleClick = () => {
+    dispatch(sessionActions.logout())
+    history.push('/')
+  }
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <button style={{"marginRight": "15px"}} onClick={(() => dispatch(sessionActions.logout()))}>Log Out</button>
+      <button style={{"marginRight": "15px"}} onClick={handleClick}>Log Out</button>
     );
   } else {
     sessionLinks = (
