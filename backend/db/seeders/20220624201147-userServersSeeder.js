@@ -10,6 +10,10 @@ module.exports = {
       */
    return queryInterface.bulkInsert('UserServers', [
     {
+      userId: 1,
+      serverId: 1
+    },
+    {
      userId: 1,
      serverId: 2
    },

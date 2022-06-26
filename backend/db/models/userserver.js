@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     serverId: DataTypes.INTEGER
   }, {});
   UserServer.associate = function(models) {
-    UserServer.belongsTo(models.User, { onDelete: "CASCADE", foreignKey: "userId" });
+    UserServer.belongsTo(models.User, { foreignKey: "userId" });
   };
   return UserServer;
 };

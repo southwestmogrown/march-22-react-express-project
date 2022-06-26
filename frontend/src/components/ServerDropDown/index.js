@@ -17,6 +17,8 @@ const ServerDropDown = ({servers}) => {
         setShowServers(!showServers)
         setIsExpanded(!isExpanded)
     }
+
+    
     
     const expandIcon = isExpanded ? (
         <ExpandLessIcon onClick={handleShowServers} /> 
