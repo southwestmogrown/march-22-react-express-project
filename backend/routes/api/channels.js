@@ -53,4 +53,16 @@ router.put('/:channelId', asyncHandler(async(req, res) => {
     res.json(updatedChannel)
 }));
 
+router.delete('/:channelId', asyncHandler(async(req, res) => {
+    const { channelId } = req.params;
+
+    const deletedChannel = await Channel.destroy({
+        where: {
+            id: channelId
+        }
+    });
+
+    res.json({channelId})
+}));
+
 module.exports = router;
