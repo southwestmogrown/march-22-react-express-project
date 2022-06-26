@@ -1,18 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 
+import * as sessionActions from '../../store/session'; 
+import './Navigation.css';
+
+
 function Navigation({ isLoaded }){
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <button style={{"marginRight": "15px"}} onClick={(() => dispatch(sessionActions.logout()))}>Log Out</button>
     );
   } else {
     sessionLinks = (
