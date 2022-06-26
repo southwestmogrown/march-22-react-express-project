@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as serverActions from '../../store/server';
 
-const CreateServerForm = () => {
+const CreateServerForm = ({ setShowModal }) => {
 
     const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const CreateServerForm = () => {
         const server = await dispatch(serverActions.createServer(payload)).catch(
             errors => setErrors(errors));
         
-        console.log(server)
+        setShowModal(false)
     }
 
 

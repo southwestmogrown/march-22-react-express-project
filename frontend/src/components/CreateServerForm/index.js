@@ -13,7 +13,7 @@ function CreateServerFormModal() {
       <AddIcon onClick={() => setShowModal(true)}/>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateServerForm />
+          <CreateServerForm setShowModal={setShowModal} />
         </Modal>
       )}
     </>
