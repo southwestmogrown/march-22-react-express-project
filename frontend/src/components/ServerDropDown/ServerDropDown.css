@@ -1,0 +1,25 @@
+.servers-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+.server-name {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25vw;
+}
+
+.servers-list > li {
+    padding: 10px;
+    width: 25vw;
+    border-bottom: 1px solid black;
+}
+
+.servers-list > li:hover {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}

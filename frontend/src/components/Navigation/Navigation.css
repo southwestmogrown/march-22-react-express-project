@@ -1,0 +1,30 @@
+.nav-container {
+    background-color: #2f3135;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.home-nav {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.home-nav:hover {
+    font-weight: bold;
+}
+
+.home-nav-container {
+    padding: 1em;
+}
+
+.nav-session-links {
+    display: flex;
+    width: 35%;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+

@@ -1,0 +1,17 @@
+.server-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.server-icons {
+    display: flex;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.icon:hover {
+    color: red;
+    cursor: pointer;
+}

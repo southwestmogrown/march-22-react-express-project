@@ -1,6 +1,6 @@
-.signup-form-container {
+.create-server-form-container {
     background-color: rgb(155, 154, 154);
-    height: 450px;
+    height: 300px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -10,8 +10,8 @@
         -1px -1px 25px rgba(255,255,255,0.5);
 }
 
-.signup-form {
-    height: 425px;
+.create-server-form {
+    height: 275px;
     width: 275px;
     display: flex;
     flex-direction: column;

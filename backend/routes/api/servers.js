@@ -23,7 +23,7 @@ router.get('/:serverId', asyncHandler(async(req, res) => {
 
 
 
-router.get(`/users/:userId`, asyncHandler(async(req, res) => {
+router.get(`/user/:userId`, asyncHandler(async(req, res) => {
     const userId = Number(req.params.userId)
     
     const servers = await Server.findAll({

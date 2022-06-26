@@ -1,35 +1,50 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 
+import * as sessionActions from '../../store/session'; 
+import './Navigation.css';
+
+
 function Navigation({ isLoaded }){
+  const history = useHistory();
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
+  const handleClick = () => {
+    dispatch(sessionActions.logout())
+    history.push('/')
+  }
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <button style={{"marginRight": "15px"}} onClick={handleClick}>Log Out</button>
     );
   } else {
     sessionLinks = (
-      <>
-        <LoginFormModal />
-        <SignupFormModal />
-      </>
+      <div className='nav-session-links'>
+        <div>
+          <LoginFormModal className='session-link' />
+        </div>
+        <div>
+          <SignupFormModal className='session-link' />
+        </div>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <div className='nav-container'>
+      <div className='home-nav-container'>
+        <NavLink className='home-nav' exact to="/">HomeSteadr</NavLink>
+      </div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    </div>
   );
 }
 
