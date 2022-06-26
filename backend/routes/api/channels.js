@@ -39,4 +39,18 @@ router.post('/', asyncHandler(async(req, res)  => {
     res.json(channel);
 }));
 
+router.put('/:channelId', asyncHandler(async(req, res) => {
+    const { channelId } = req.params;
+    const { name, serverId } = req.body;
+
+    const channel = await Channel.findByPk(channelId);
+
+    const updatedChannel = await channel.update({
+        name,
+        serverId
+    });
+
+    res.json(updatedChannel)
+}));
+
 module.exports = router;
