@@ -1,13 +1,16 @@
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import './ServerDropDown.css';
 import CreateServerFormModal from "../CreateServerForm";
 import ServerCard from "../ServerCard";
+import { useDispatch } from "react-redux";
+import * as channelActions from '../../store/channel';
 
 
 const ServerDropDown = ({servers}) => {
+    const dispatch = useDispatch();
     const serversArray = Object.values(servers);
     const [defaultServer, setDefaultServer] = useState(serversArray[0]);
     const [showServers, setShowServers] = useState(false);
@@ -17,6 +20,10 @@ const ServerDropDown = ({servers}) => {
         setShowServers(!showServers)
         setIsExpanded(!isExpanded)
     }
+
+    useEffect(() => {
+        dispatch(channelActions.loadServerChannels(defaultServer.id))
+    }, [dispatch, defaultServer])
 
     
     
