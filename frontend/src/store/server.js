@@ -78,7 +78,9 @@ export const updateServer = (serverId, serverFormData) => async (dispatch) => {
 }
 
 export const deleteServer = (serverId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/servers/${serverId}`);
+    const res = await csrfFetch(`/api/servers/${serverId}`, {
+        method: "DELETE"
+    });
 
     if (res.ok) {
         const deletedId = await res.json();
